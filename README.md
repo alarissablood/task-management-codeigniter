@@ -1,84 +1,84 @@
 # Task Management System
 
-Sistema de gerenciamento de tarefas desenvolvido com PHP e CodeIgniter 4.
+A task management system developed with PHP and CodeIgniter 4.
 
-## Funcionalidades
+## Features
 
-- Criar tarefas
-- Listar tarefas
-- Editar tarefas
-- Excluir tarefas
-- Validar os formulários
-- Proteger os formulários contra CSRF
+- Create tasks
+- List all tasks
+- Edit existing tasks
+- Delete tasks
+- Validate form data
+- Protect forms against CSRF attacks
 
-## Tecnologias utilizadas
+## Technologies
 
 - PHP
 - CodeIgniter 4
 - PostgreSQL
 - CodeIgniter Query Builder
 - Bootstrap 5
-- HTML e CSS
+- HTML and CSS
 
-## Estrutura da tarefa
+## Task Structure
 
-Cada tarefa possui:
+Each task contains:
 
 - ID
-- Título
-- Descrição
+- Title
+- Description
 - Status
-- Data de criação
-- Data de atualização
+- Creation date
+- Update date
 
-Os status disponíveis são:
+Available statuses:
 
-- Pendente
-- Em andamento
-- Concluída
+- Pending
+- In progress
+- Completed
 
-## Requisitos
+## Requirements
 
-Antes de executar o projeto, instale:
+Before running the project, install:
 
-- PHP 8.1 ou superior
+- PHP 8.1 or higher
 - Composer
 - PostgreSQL
-- Extensão PostgreSQL do PHP
+- PHP PostgreSQL extension
 
-## Como executar o projeto
+## Installation
 
-Clone o repositório:
-
-```bash
-git clone URL_DO_REPOSITORIO
-```
-
-Entre na pasta:
+Clone the repository:
 
 ```bash
-cd sistema-tarefas
+git clone https://github.com/alarissabloood/task-management-codeigniter.git
 ```
 
-Instale as dependências:
+Enter the project directory:
+
+```bash
+cd task-management-codeigniter
+```
+
+Install the dependencies:
 
 ```bash
 composer install
 ```
 
-Crie o arquivo `.env` a partir do arquivo `env`:
+Create the `.env` file from the `env` template:
 
 ```bash
 copy env .env
 ```
 
-Configure o PostgreSQL no arquivo `.env`:
+Configure the PostgreSQL connection in `.env`:
 
 ```ini
 database.default.hostname = localhost
 database.default.database = tarefas
 database.default.username = postgres
-database.default.password = sua_senha
+database.default.password = your_password
 database.default.DBDriver = Postgre
 database.default.DBPrefix =
 database.default.port = 5432
@@ -86,47 +86,51 @@ database.default.charset = UTF8
 database.default.DBCollat =
 ```
 
-Crie no PostgreSQL um banco chamado:
+Create a PostgreSQL database named:
 
 ```text
 tarefas
 ```
 
-Execute a migration:
+Run the migrations:
 
 ```bash
 php spark migrate
 ```
 
-Inicie o servidor:
+Start the development server:
 
 ```bash
 php spark serve
 ```
 
-Abra no navegador:
+Open the application:
 
 ```text
 http://localhost:8080
 ```
 
-## Segurança
+## Security
 
-O projeto utiliza:
+The project uses:
 
-- Query Builder para evitar SQL Injection
-- `esc()` para proteção contra XSS
-- CSRF nos formulários
-- Lista de campos permitidos no Model
-- Regras de validação do CodeIgniter
+- Query Builder to prevent SQL Injection
+- `esc()` to help prevent XSS
+- CSRF protection on forms
+- Allowed fields in the Model
+- CodeIgniter validation rules
 
-## Rotas
+## Routes
 
-| Método | Endereço | Ação |
+| Method | Route | Action |
 |---|---|---|
-| GET | `/tasks` | Listar tarefas |
-| GET | `/tasks/create` | Mostrar formulário |
-| POST | `/tasks` | Criar tarefa |
-| GET | `/tasks/{id}/edit` | Mostrar formulário de edição |
-| POST | `/tasks/{id}` | Atualizar tarefa |
-| POST | `/tasks/{id}/delete` | Excluir tarefa |
+| GET | `/tasks` | List tasks |
+| GET | `/tasks/create` | Display the creation form |
+| POST | `/tasks` | Create a task |
+| GET | `/tasks/{id}/edit` | Display the editing form |
+| POST | `/tasks/{id}` | Update a task |
+| POST | `/tasks/{id}/delete` | Delete a task |
+
+## Interface
+
+The application interface is available in Portuguese.
