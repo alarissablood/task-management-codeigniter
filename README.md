@@ -1,84 +1,73 @@
-# Task Management System
+# Gerenciador de Tarefas
 
-A task management system developed with PHP and CodeIgniter 4.
+Sistema de gerenciamento de tarefas desenvolvido com PHP e CodeIgniter 4.
 
-## Features
+## Funcionalidades
 
-- Create tasks
-- List all tasks
-- Edit existing tasks
-- Delete tasks
-- Validate form data
-- Protect forms against CSRF attacks
+- Criar tarefas
+- Listar tarefas
+- Editar tarefas
+- Excluir tarefas
+- Validar os formulários
+- Proteger os formulários contra CSRF
 
-## Technologies
+Cada tarefa possui título, descrição e um dos seguintes status:
+
+- Pendente
+- Em andamento
+- Concluída
+
+## Tecnologias
 
 - PHP
 - CodeIgniter 4
 - PostgreSQL
 - CodeIgniter Query Builder
 - Bootstrap 5
-- HTML and CSS
 
-## Task Structure
+## Como executar
 
-Each task contains:
-
-- ID
-- Title
-- Description
-- Status
-- Creation date
-- Update date
-
-Available statuses:
-
-- Pending
-- In progress
-- Completed
-
-## Requirements
-
-Before running the project, install:
-
-- PHP 8.1 or higher
-- Composer
-- PostgreSQL
-- PHP PostgreSQL extension
-
-## Installation
-
-Clone the repository:
+### 1. Clone o repositório
 
 ```bash
 git clone https://github.com/alarissabloood/task-management-codeigniter.git
 ```
 
-Enter the project directory:
+### 2. Entre na pasta do projeto
 
 ```bash
 cd task-management-codeigniter
 ```
 
-Install the dependencies:
+### 3. Instale as dependências
 
 ```bash
 composer install
 ```
 
-Create the `.env` file from the `env` template:
+### 4. Crie o arquivo `.env`
+
+No Windows:
 
 ```bash
 copy env .env
 ```
 
-Configure the PostgreSQL connection in `.env`:
+No Linux ou macOS:
+
+```bash
+cp env .env
+```
+
+### 5. Configure o PostgreSQL
+
+Crie um banco de dados chamado `tarefas` e configure o arquivo `.env`:
 
 ```ini
 database.default.hostname = localhost
 database.default.database = tarefas
 database.default.username = postgres
-database.default.password = your_password
+database.default.password = sua_senha
 database.default.DBDriver = Postgre
 database.default.DBPrefix =
 database.default.port = 5432
@@ -86,89 +75,46 @@ database.default.charset = UTF8
 database.default.DBCollat =
 ```
 
-Create a PostgreSQL database named:
-
-```text
-tarefas
-```
-
-Run the migrations:
+### 6. Execute as migrations
 
 ```bash
 php spark migrate
 ```
 
-Start the development server:
+### 7. Inicie o servidor
 
 ```bash
 php spark serve
 ```
 
-Open the application:
+Acesse:
 
 ```text
 http://localhost:8080
 ```
 
-## Security
+## API REST — bônus
 
-The project uses:
-
-- Query Builder to prevent SQL Injection
-- `esc()` to help prevent XSS
-- CSRF protection on forms
-- Allowed fields in the Model
-- CodeIgniter validation rules
-
-## Routes
-
-| Method | Route | Action |
+| Método | Endpoint | Ação |
 |---|---|---|
-| GET | `/tasks` | List tasks |
-| GET | `/tasks/create` | Display the creation form |
-| POST | `/tasks` | Create a task |
-| GET | `/tasks/{id}/edit` | Display the editing form |
-| POST | `/tasks/{id}` | Update a task |
-| POST | `/tasks/{id}/delete` | Delete a task |
+| GET | `/api/tasks` | Listar tarefas |
+| GET | `/api/tasks/{id}` | Consultar uma tarefa |
+| POST | `/api/tasks` | Criar uma tarefa |
+| PUT | `/api/tasks/{id}` | Atualizar uma tarefa |
+| DELETE | `/api/tasks/{id}` | Excluir uma tarefa |
 
-## Interface
-
-## REST API
-
-The project provides a REST API that returns JSON responses.
-
-### Endpoints
-
-| Method | Endpoint | Action |
-|---|---|---|
-| GET | `/api/tasks` | List all tasks |
-| GET | `/api/tasks/{id}` | Get a task by ID |
-| POST | `/api/tasks` | Create a task |
-| PUT | `/api/tasks/{id}` | Update a task |
-| DELETE | `/api/tasks/{id}` | Delete a task |
-
-### Request Body
-
-Use the following JSON structure for `POST` and `PUT` requests:
+Exemplo de JSON para criação ou atualização:
 
 ```json
 {
-    "title": "API task",
-    "description": "Task created using the REST API.",
-    "status": "in_progress"
+  "title": "Estudar CodeIgniter",
+  "description": "Finalizar o teste de desenvolvimento.",
+  "status": "in_progress"
 }
 ```
 
-Available status values:
+Valores permitidos para `status`:
 
 - `pending`
 - `in_progress`
 - `completed`
-
-The API can be tested with Postman using:
-
-```text
-http://localhost:8080/api/tasks
-```Ss
-
-The application interface is available in Portuguese.
