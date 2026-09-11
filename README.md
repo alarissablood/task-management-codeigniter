@@ -133,4 +133,42 @@ The project uses:
 
 ## Interface
 
+## REST API
+
+The project provides a REST API that returns JSON responses.
+
+### Endpoints
+
+| Method | Endpoint | Action |
+|---|---|---|
+| GET | `/api/tasks` | List all tasks |
+| GET | `/api/tasks/{id}` | Get a task by ID |
+| POST | `/api/tasks` | Create a task |
+| PUT | `/api/tasks/{id}` | Update a task |
+| DELETE | `/api/tasks/{id}` | Delete a task |
+
+### Request Body
+
+Use the following JSON structure for `POST` and `PUT` requests:
+
+```json
+{
+    "title": "API task",
+    "description": "Task created using the REST API.",
+    "status": "in_progress"
+}
+```
+
+Available status values:
+
+- `pending`
+- `in_progress`
+- `completed`
+
+The API can be tested with Postman using:
+
+```text
+http://localhost:8080/api/tasks
+```Ss
+
 The application interface is available in Portuguese.
